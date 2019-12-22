@@ -29,4 +29,18 @@ function BEH_WTP_Data_analysis(subject_folder, trialOrder, subject_responses)
     legend('Mean Price', 'Regression line')
     saveas(gcf, [subject_folder filesep 'Reservation Price as funcition of absolute difference.png']);
     close(gcf);
+    
+    % Figure 3
+    figure;
+    scatter(abs(trials(1:numel(meanPrice),1) - trials(1:numel(meanPrice),2)), subject_responses.timing.loopTimer)
+    reg_line = lsline;
+    set(reg_line, 'Color', '#006633', 'LineWidth', 1)
+    grid on;
+    xlabel('Absolute difference between two proposed gains', 'FontSize', 14);
+    ylabel('Mean Reservation Price', 'FontSize', 14);
+    title('{\it Reaction time as function of ablosute difference}', 'FontSize', 14);
+    legend('Reaction time of giving both prices', 'Regression line')
+    saveas(gcf, [subject_folder filesep 'Reaction time as funcition of absolute difference.png']);
+    close(gcf);
+
 end
